@@ -1,8 +1,8 @@
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
-      NOTION_ACCESS_TOKEN: string;
-      NOTION_BLOG_DATABASE_Id: string;
+      NEXT_PUBLIC_NOTION_ACCESS_TOKEN: string;
+      NEXT_PUBLIC_NOTION_BLOG_DATABASE_ID: string;
     }
   }
 }

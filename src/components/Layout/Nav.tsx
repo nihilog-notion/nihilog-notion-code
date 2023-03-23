@@ -11,7 +11,8 @@ export function Nav() {
     <>
       <nav css={style}>
         <Link href='/'>홈</Link>
-        <Link href='/test'>테스트</Link>
+        <Link href='/contact'>연락처</Link>
+        <Link href='/posts'>포스트</Link>
       </nav>
     </>
   );

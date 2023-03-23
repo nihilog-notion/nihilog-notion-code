@@ -3,7 +3,7 @@ import Document, {
   Html, Head, Main, NextScript, DocumentContext
 } from 'next/document';
 
-class NextDocument extends Document {
+export default class NextDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const initialProps = await Document.getInitialProps(ctx);
     return { ...initialProps, };
@@ -26,5 +26,3 @@ class NextDocument extends Document {
     );
   }
 }
-
-export default NextDocument;

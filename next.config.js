@@ -1,3 +1,4 @@
+/** @type {import('next').NextConfig} */
 module.exports = {
   distDir: 'build',
   // 정적 페이지의 결과물이 이 폴더에 생긴다.
@@ -12,5 +13,14 @@ module.exports = {
       use: [ '@svgr/webpack', ],
     });
     return config;
+  },
+  async redirects() {
+    return [
+      {
+        source: '/posts',
+        destination: '/posts/page/1',
+        permanent: false,
+      },
+    ];
   },
 };

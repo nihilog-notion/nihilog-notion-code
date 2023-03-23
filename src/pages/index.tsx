@@ -1,8 +1,17 @@
 import React from 'react';
 import tw, { css } from 'twin.macro';
+import { GetStaticProps } from 'next';
 import { AppLayout } from '@/layouts';
+import { getPosts, getRecentPosts } from '@/utils/notion';
+import { IPost } from '@/types/page.types';
 
-export default function IndexPage() {
+interface Props {
+  posts: IPost[];
+}
+
+export default function IndexPage({ posts, }: Props) {
+  console.log(posts);
+
   const style = css`
     ${tw` py-4 `}
 
@@ -15,9 +24,25 @@ export default function IndexPage() {
     <>
       <AppLayout title='홈'>
         <div css={style}>
-          <h2>여기는 그냥 홈페이지</h2>
+          <h2>최신 글</h2>
+          <div>
+            {posts.map((item) => (
+              <div key={item.pageId}>{JSON.stringify(item)}</div>
+            ))}
+          </div>
         </div>
       </AppLayout>
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const data = await getRecentPosts();
+  const posts = getPosts(data);
+
+  return {
+    props: {
+      posts,
+    },
+  };
+};

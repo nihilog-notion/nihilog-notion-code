@@ -7,17 +7,15 @@ interface Props {
   children: React.ReactNode;
 }
 
-export function Main({ styles, children, }: Props) {
-  const style = {
-    default: [
-      tw`  `,
-      styles,
-    ],
-  };
+export function PostList({ styles, children, }: Props) {
+  const style = css([
+    tw` grid grid-cols-4 gap-[30px] `,
+    styles,
+  ]);
 
   return (
     <>
-      <main css={style.default}>{children}</main>
+      <div css={style}>{children}</div>
     </>
   );
 }

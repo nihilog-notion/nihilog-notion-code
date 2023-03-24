@@ -1,20 +1,25 @@
-import Link from 'next/link';
 import React from 'react';
-import tw, { css } from 'twin.macro';
+import Link from 'next/link';
+import tw, { TwStyle, css } from 'twin.macro';
+import { SerializedStyles } from '@emotion/react';
 
 interface Props {
   number: number;
   type?: 'posts' | 'tags' | 'categories';
+  styles?: (SerializedStyles | TwStyle);
 }
 
-export function PagingButton({ number, type = 'posts', }: Props) {
-  const style = css`
-    ${tw`  `}
-  `;
+export function PagingButton({ number, type = 'posts', styles, }: Props) {
+  const style = {
+    default: [
+      tw`  `,
+      styles,
+    ],
+  };
 
   return (
     <>
-      <Link href={`/${type}/page/${number}`} css={style}>{number}</Link>
+      <Link href={`/${type}/page/${number}`} css={style.default}>{number}</Link>
     </>
   );
 }

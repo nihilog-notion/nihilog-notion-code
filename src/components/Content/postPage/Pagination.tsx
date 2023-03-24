@@ -1,13 +1,15 @@
 import React from 'react';
-import tw, { css } from 'twin.macro';
+import tw, { TwStyle, css } from 'twin.macro';
 import {
   FaAngleDoubleLeft, FaAngleDoubleRight, FaAngleLeft, FaAngleRight
 } from 'react-icons/fa';
+import { SerializedStyles } from '@emotion/react';
 import { PagingButton } from './PagingButton';
 import { PagingArrow } from './PagingArrow';
 import { NotionPages } from '@/types/page.types';
 
 interface Props {
+  styles?: (SerializedStyles | TwStyle);
   array: number[];
   page: number;
   isFirst: boolean;
@@ -16,15 +18,18 @@ interface Props {
 }
 
 export function Pagination({
-  array, page, isFirst, isLast, pages,
+  array, page, isFirst, isLast, pages, styles,
 }: Props) {
-  const style = css`
-    ${tw`  `}
-  `;
+  const style = {
+    default: [
+      tw`  `,
+      styles,
+    ],
+  };
 
   return (
     <>
-      <div css={style}>
+      <div css={style.default}>
         <PagingArrow disabled={isFirst} number={pages[0].page}>
           <FaAngleDoubleLeft />
         </PagingArrow>

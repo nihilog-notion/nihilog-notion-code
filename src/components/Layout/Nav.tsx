@@ -1,15 +1,23 @@
-import Link from 'next/link';
 import React from 'react';
-import tw, { css } from 'twin.macro';
+import Link from 'next/link';
+import tw, { TwStyle, css } from 'twin.macro';
+import { SerializedStyles } from '@emotion/react';
 
-export function Nav() {
-  const style = css`
-    ${tw`  `}
-  `;
+interface Props {
+  styles?: (SerializedStyles | TwStyle);
+}
+
+export function Nav({ styles, }: Props) {
+  const style = {
+    default: [
+      tw`  `,
+      styles,
+    ],
+  };
 
   return (
     <>
-      <nav css={style}>
+      <nav css={style.default}>
         <Link href='/'>홈</Link>
         <Link href='/contact'>연락처</Link>
         <Link href='/posts'>포스트</Link>

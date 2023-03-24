@@ -1,7 +1,7 @@
 import React from 'react';
 import { Global } from '@emotion/react';
 import { useRouter } from 'next/router';
-import { GlobalStyles } from '@/styles';
+import { globalStyles } from '@/styles';
 import {
   Footer, Header, Main, Meta, Nav
 } from '@/components/Layout';
@@ -28,7 +28,7 @@ export function AppLayout({
 
   return (
     <>
-      <Global styles={GlobalStyles} />
+      <Global styles={globalStyles} />
       <Meta meta={meta} />
 
       <Header />

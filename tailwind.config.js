@@ -128,6 +128,7 @@ module.exports = {
           700: '#434343',
           800: '#383838',
           900: '#000000',
+          base: '#333333',
         },
       },
       animation: {
@@ -148,6 +149,8 @@ module.exports = {
     },
   },
   plugins: [
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/line-clamp'),
     plugin(({ addVariant, }) => {
       addVariant('first', [ '&:first-of-type', ]);
       addVariant('last', [ '&:last-of-type', ]);

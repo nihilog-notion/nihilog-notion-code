@@ -1,39 +1,36 @@
-import Link from 'next/link';
 import React from 'react';
-import tw, { css } from 'twin.macro';
+import { SerializedStyles } from '@emotion/react';
+import Link from 'next/link';
+import tw, { TwStyle, css } from 'twin.macro';
 
 interface Props {
   children: React.ReactNode;
   disabled?: boolean;
   type?: 'posts' | 'tags' | 'categories';
+  styles?: (SerializedStyles | TwStyle);
   number?: number;
 }
 
 export function PagingArrow({
-  children, disabled, type = 'posts', number,
+  children, disabled, type = 'posts', number, styles,
 }: Props) {
-  const style = css`
-    ${tw`  `}
-  `;
-
-  const disabledStyle = css`
-    ${tw`  `}
-  `;
+  const style = css([
+    tw`  `,
+    styles,
+    {
+      '&.disabled': [
+        tw`  `,
+      ],
+    },
+  ]);
 
   return (
     <>
       {
         disabled
-          ? <span css={disabledStyle}>{children}</span>
+          ? <span className='disabled' css={style}>{children}</span>
           : <Link href={`/${type}/page/${number}`} css={style}>{children}</Link>
       }
-      {/* <span css={style}>
-        {
-          disabled
-            ? children
-            : <Link href={`/${type}/page/${number}`}>{children}</Link>
-        }
-      </span> */}
     </>
   );
 }

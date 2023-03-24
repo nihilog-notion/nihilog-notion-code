@@ -1,14 +1,22 @@
 import React from 'react';
-import tw, { css } from 'twin.macro';
+import tw, { TwStyle, css } from 'twin.macro';
+import { SerializedStyles } from '@emotion/react';
 
-export function Footer() {
-  const style = css`
-    ${tw`  `}
-  `;
+interface Props {
+  styles?: (SerializedStyles | TwStyle);
+}
+
+export function Footer({ styles, }: Props) {
+  const style = {
+    default: [
+      tw`  `,
+      styles,
+    ],
+  };
 
   return (
     <>
-      <footer css={style}>푸터</footer>
+      <footer css={style.default}>푸터</footer>
     </>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useIsFetching, useIsMutating } from 'react-query';
-import tw, { css } from 'twin.macro';
+import tw, { TwStyle, css } from 'twin.macro';
 import { CgSpinner } from 'react-icons/cg';
 
 export function IsLoading() {

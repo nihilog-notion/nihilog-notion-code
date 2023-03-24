@@ -1,3 +1,6 @@
+import { SerializedStyles } from '@emotion/react';
+import { TwStyle } from 'twin.macro';
+
 export interface ISiteData {
   title: string;
   description: string;
@@ -25,4 +28,8 @@ export interface IMetaData {
 
 export interface IAppLayoutProps extends IMetaData {
   children: React.ReactNode;
+}
+
+export interface IStyleObject {
+  [key: string]: SerializedStyles | TwStyle
 }

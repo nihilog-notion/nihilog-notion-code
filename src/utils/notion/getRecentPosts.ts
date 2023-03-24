@@ -15,7 +15,7 @@ export async function getRecentPosts(): Promise<NotionPrePost[]> {
       property: 'created',
       direction: 'descending',
     }, ],
-    page_size: 10,
+    page_size: 12,
   });
 
   const data = results as NotionDatabaseRow[];

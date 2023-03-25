@@ -7,9 +7,9 @@ export function getPages(data: NotionPrePost[]): NotionPages[] {
       no: index + 1,
       id: item,
     }))
-    // .filter((item) => (
-    //   item.no % 20 === 1
-    // ))
+    .filter((item) => (
+      item.no % 5 === 1
+    ))
     .map((item, index) => ({
       page: index + 1,
       ...item,

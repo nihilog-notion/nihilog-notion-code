@@ -9,7 +9,7 @@ interface Props {
 }
 
 export function PostItemCategoryProperty({ styles, category, }: Props) {
-  const cateogryLink = `/categories/category/${category}/page/1`;
+  const cateogryLink = `/categories/${category}/page/1`;
 
   const style = {
     default: css([
@@ -20,12 +20,9 @@ export function PostItemCategoryProperty({ styles, category, }: Props) {
       tw` text-[1rem] py-1 px-2 bg-royal-blue-200 shrink-0 self-start rounded-2 `,
     ]),
     category: css([
-      {
-        '& > a': css([
-          tw` py-1 px-2 border border-royal-blue-400 text-[1rem] text-royal-blue-400 rounded-2 leading-none `,
-          tw` hover:( text-white bg-royal-blue-500 border-royal-blue-500 ) `,
-        ]),
-      },
+      tw` [>a]:( py-1 px-2 border border-royal-blue-400 text-[1rem] text-royal-blue-400 rounded-2 leading-none
+        hover:( text-white bg-royal-blue-500 border-royal-blue-500 )
+      ) `,
     ]),
   };
 

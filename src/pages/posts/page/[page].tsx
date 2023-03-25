@@ -6,17 +6,20 @@ import {
 } from '@/utils/notion';
 import { IPost, NotionPages } from '@/types/page.types';
 import { AppLayout } from '@/layouts';
-import { Pagination } from '@/components/Content/postPage';
+import { Pagination } from '@/components/Content/pagination';
+import { SectionHeading } from '@/components/Content';
+import { PostItem, PostList } from '@/components/Content/postPage';
 
 interface Props {
   posts: IPost[];
   pages: NotionPages[];
-  pagination: number[];
+  pageArray: number[];
   page: number;
+  count: number;
 }
 
 export default function PostListNumberPage({
-  posts, pages, pagination, page,
+  posts, pages, pageArray, page, count,
 }: Props) {
   const [ isFirst, setIsFirst, ] = useState(false);
   const [ isLast, setIsLast, ] = useState(false);
@@ -35,30 +38,30 @@ export default function PostListNumberPage({
 
   const style = {
     default: css([
-      tw`  `,
+      tw` py-[50px] text-black-base `,
+    ]),
+    postList: css([
+      tw` mb-10 `,
     ]),
   };
 
   return (
     <>
       <AppLayout title={`포스트 목록 (${page}페이지)`}>
-        <div css={style}>
-          <div>
-            <h2>글목록</h2>
+        <div css={style.default}>
+          <SectionHeading>전체 포스트 {count}건</SectionHeading>
+          <PostList styles={style.postList}>
             {posts.map((item) => (
-              <div key={item.pageId}>{JSON.stringify(item)}</div>
+              <PostItem key={item.pageId} item={item} />
             ))}
-          </div>
-          <div>
-            <h2>페이지네이션</h2>
-            <Pagination
-              array={pagination}
-              page={page}
-              isFirst={isFirst}
-              isLast={isLast}
-              pages={pages}
-            />
-          </div>
+          </PostList>
+          <Pagination
+            pageArray={pageArray}
+            page={page}
+            isFirst={isFirst}
+            isLast={isLast}
+            pages={pages}
+          />
         </div>
       </AppLayout>
     </>
@@ -94,15 +97,16 @@ export const getStaticProps: GetStaticProps = async ({ params, }: Params) => {
   const posts = getPosts(pagePosts);
   const paginationArray = getPaginationArray(pages);
 
-  const [ pagination, ] = paginationArray.filter((item) => (
+  const [ pageArray, ] = paginationArray.filter((item) => (
     item.includes(Number(page))
   ));
 
   return {
     props: {
+      count: allData.count,
       posts,
       pages,
-      pagination,
+      pageArray,
       page: Number(page),
     },
   };

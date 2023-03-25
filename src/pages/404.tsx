@@ -5,7 +5,7 @@ import { AppLayout } from '@/layouts';
 export default function NotPound404() {
   const style = {
     default: css([
-      tw`  `,
+      tw` py-[50px] text-black-base `,
     ]),
   };
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import tw, { css } from 'twin.macro';
 import { SerializedStyles } from '@emotion/react';
 import Link from 'next/link';
@@ -11,13 +11,25 @@ interface Props {
 }
 
 export function NavLink({ styles, link, label, }: Props) {
+  const [ currentStyle, setCurrentStyle, ] = useState(null);
+
   const router = useRouter();
-  const currentStyle = router.pathname === link
-    ? [
+
+  useEffect(() => {
+    const style = css([
       tw` text-black-700 border-black-700 bg-white `,
       tw` hover:( text-black-700 border-black-700 bg-white ) `,
-    ]
-    : null;
+    ]);
+
+    switch (label) {
+      case '포스트':
+        setCurrentStyle(router.asPath.includes(link) ? style : null);
+        break;
+      default:
+        setCurrentStyle(router.asPath === link ? style : null);
+        break;
+    }
+  }, [ link, router, ]);
 
   const style = {
     default: css([

@@ -5,24 +5,20 @@ import tw, { TwStyle, css } from 'twin.macro';
 
 interface Props {
   children: React.ReactNode;
+  link: string;
   disabled?: boolean;
-  type?: 'posts' | 'tags' | 'categories';
   styles?: (SerializedStyles | TwStyle);
-  number?: number;
 }
 
 export function PagingArrow({
-  children, disabled, type = 'posts', number, styles,
+  children, disabled, link, styles,
 }: Props) {
   const style = {
     default: css([
-      tw`  `,
+      tw` p-2 block shrink-0 w-[40px] bg-black-200 text-black-500 rounded-2 flex items-center justify-center `,
+      tw` hover:( bg-black-700 text-white ) `,
+      tw` [&.disabled]:( text-black-300 bg-black-100 ) `,
       styles,
-      {
-        '&.disabled': [
-          tw`  `,
-        ],
-      },
     ]),
   };
 
@@ -30,8 +26,8 @@ export function PagingArrow({
     <>
       {
         disabled
-          ? <span className='disabled' css={style}>{children}</span>
-          : <Link href={`/${type}/page/${number}`} css={style}>{children}</Link>
+          ? <span className='disabled' css={style.default}>{children}</span>
+          : <Link href={link} css={style.default}>{children}</Link>
       }
     </>
   );

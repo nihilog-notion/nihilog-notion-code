@@ -2,7 +2,7 @@ import { Client } from '@notionhq/client';
 import { NotionToMarkdown } from 'notion-to-md';
 import { TOKEN } from '../constans';
 
-export const PAGE_SIZE = 1;
+export const PAGE_SIZE = 5;
 
 export const notion = new Client({
   auth: TOKEN,

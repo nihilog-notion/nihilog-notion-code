@@ -15,9 +15,11 @@ interface Props {
 export default function PostPage({ post, }: Props) {
   const { page, mdString, } = post;
 
-  const style = css`
-    ${tw`  `}
-  `;
+  const style = {
+    default: css([
+      tw`  `,
+    ]),
+  };
 
   return (
     <>

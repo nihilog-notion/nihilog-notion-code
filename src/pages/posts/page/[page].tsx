@@ -33,9 +33,11 @@ export default function PostListNumberPage({
     }
   }, [ pages, page, ]);
 
-  const style = css`
-    ${tw`  `}
-  `;
+  const style = {
+    default: css([
+      tw`  `,
+    ]),
+  };
 
   return (
     <>

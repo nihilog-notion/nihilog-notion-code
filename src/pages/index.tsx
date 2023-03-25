@@ -5,7 +5,7 @@ import { AppLayout } from '@/layouts';
 import { getPosts, getRecentPosts } from '@/utils/notion';
 import { IPost } from '@/types/page.types';
 import { PostItem, PostList } from '@/components/Content/postPage';
-import { Heading } from '@/components/Base';
+import { SectionHeading } from '@/components/Content';
 
 interface Props {
   posts: IPost[];
@@ -16,15 +16,11 @@ export default function IndexPage({ posts, }: Props) {
     tw` py-[50px] text-black-base `,
   ]);
 
-  const headingStyle = css([
-    tw` text-center mb-10 leading-none `,
-  ]);
-
   return (
     <>
       <AppLayout title='홈'>
         <div css={style}>
-          <Heading type='h2' styles={headingStyle}>Recent Post</Heading>
+          <SectionHeading>Recent Post</SectionHeading>
           <PostList>
             {posts.map((item) => (
               <PostItem key={item.pageId} item={item} />

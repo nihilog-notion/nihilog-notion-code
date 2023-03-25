@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from 'react';
-import tw, { TwStyle } from 'twin.macro';
+import tw, { TwStyle, css } from 'twin.macro';
 import { SerializedStyles } from '@emotion/react';
 import Link from 'next/link';
 import { FaSearch } from 'react-icons/fa';
@@ -34,29 +34,40 @@ export function Header({ styles, }: Props) {
   }, [ keyword, ]);
 
   const style = {
-    default: [
-      tw` flex items-center p-3 mb-5 pb-5 border-b-[5px] border-dotted border-black-200 text-black-base `,
+    default: css([
+      tw` flex items-center mb-5 border-b-[5px] border-dotted border-black-200 text-black-base `,
+      tw` lg:( p-3 pb-5 pt-0 ) `,
+      tw` md:( p-3 pb-5 pt-0 ) `,
+      tw` sm:( flex-col gap-2 py-3 pt-0 ) `,
+      tw` xs:( flex-col gap-2 py-3 pt-0 ) `,
       styles,
-    ],
-    link: [
+    ]),
+    link: css([
       tw` flex gap-3 items-center `,
-    ],
-    blogName: [
+    ]),
+    blogName: css([
       tw` font-900 text-[1.5rem] `,
-    ],
-    image: [
+    ]),
+    image: css([
       tw` block w-[80px] rounded-2 `,
-    ],
-    form: [
+    ]),
+    form: css([
       tw` flex-[1] shrink-0 text-right flex items-stretch justify-end `,
-    ],
-    input: [
-      tw` shrink-0 w-[400px] rounded-l-3 p-3 border-[2px] border-black-500 outline-none `,
-    ],
-    button: [
-      tw` rounded-r-3 p-3 border-[2px] border-black-500 bg-black-500 text-white w-[80px] flex items-center justify-center `,
+      tw` sm:( w-full ) `,
+      tw` xs:( w-full ) `,
+    ]),
+    input: css([
+      tw` shrink-0 rounded-l-3 p-3 border-[2px] border-black-500 outline-none `,
+      tw` lg:( w-[400px] ) `,
+      tw` md:( w-[300px] ) `,
+      // TODO: 검색창 부분 반응형 개선 필요.
+      tw` sm:( flex-[1] min-w-0 ) `,
+      tw` xs:( flex-[1] min-w-0 ) `,
+    ]),
+    button: css([
+      tw` shrink-0 rounded-r-3 p-3 border-[2px] border-black-500 bg-black-500 text-white w-[80px] flex items-center justify-center `,
       tw` hover:( border-black-700 bg-black-700 ) `,
-    ],
+    ]),
   };
 
   return (

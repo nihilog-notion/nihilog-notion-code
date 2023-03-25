@@ -8,10 +8,10 @@ interface Props {
 
 export function PostProperty({ styles, }: Props) {
   const style = {
-    default: [
+    default: css([
       tw`  `,
       styles,
-    ],
+    ]),
   };
 
   return (

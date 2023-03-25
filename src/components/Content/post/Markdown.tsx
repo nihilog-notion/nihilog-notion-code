@@ -10,10 +10,10 @@ interface Props {
 
 export function Markdown({ mdString, styles, }: Props) {
   const style = {
-    default: [
+    default: css([
       tw`  `,
       styles,
-    ],
+    ]),
   };
 
   return (

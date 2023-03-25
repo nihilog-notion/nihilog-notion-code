@@ -21,10 +21,10 @@ export function Pagination({
   array, page, isFirst, isLast, pages, styles,
 }: Props) {
   const style = {
-    default: [
+    default: css([
       tw`  `,
       styles,
-    ],
+    ]),
   };
 
   return (

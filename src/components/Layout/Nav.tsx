@@ -1,7 +1,7 @@
 import React from 'react';
-import Link from 'next/link';
 import tw, { TwStyle, css } from 'twin.macro';
 import { SerializedStyles } from '@emotion/react';
+import { NavLink } from '../Content/Nav';
 
 interface Props {
   styles?: (SerializedStyles | TwStyle);
@@ -9,18 +9,18 @@ interface Props {
 
 export function Nav({ styles, }: Props) {
   const style = {
-    default: [
-      tw`  `,
+    default: css([
+      tw` flex items-center gap-2 `,
       styles,
-    ],
+    ]),
   };
 
   return (
     <>
       <nav css={style.default}>
-        <Link href='/'>홈</Link>
-        <Link href='/contact'>연락처</Link>
-        <Link href='/posts'>포스트</Link>
+        <NavLink link='/' label='홈' />
+        <NavLink link='/contact' label='연락처' />
+        <NavLink link='/posts' label='포스트' />
       </nav>
     </>
   );

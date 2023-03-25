@@ -14,15 +14,17 @@ interface Props {
 export function PagingArrow({
   children, disabled, type = 'posts', number, styles,
 }: Props) {
-  const style = css([
-    tw`  `,
-    styles,
-    {
-      '&.disabled': [
-        tw`  `,
-      ],
-    },
-  ]);
+  const style = {
+    default: css([
+      tw`  `,
+      styles,
+      {
+        '&.disabled': [
+          tw`  `,
+        ],
+      },
+    ]),
+  };
 
   return (
     <>

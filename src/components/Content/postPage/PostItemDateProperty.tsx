@@ -9,16 +9,24 @@ interface Props {
 }
 
 export function PostItemDateProperty({ styles, label, date, }: Props) {
-  const style = css([
-    tw` flex-[1] shrink-0 `,
-    styles,
-  ]);
+  const style = {
+    default: css([
+      tw` flex items-center gap-2 `,
+      styles,
+    ]),
+    label: css([
+      tw` text-[1rem] py-1 px-2 bg-royal-blue-200 shrink-0 self-start rounded-2 `,
+    ]),
+    date: css([
+      tw` text-[1rem] `,
+    ]),
+  };
 
   return (
     <>
-      <p css={style}>
-        <span>{label}</span>
-        <span>{date}</span>
+      <p css={style.default}>
+        <span css={style.label}>{label}</span>
+        <span css={style.date}>{date}</span>
       </p>
     </>
   );

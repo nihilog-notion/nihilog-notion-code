@@ -5,21 +5,20 @@ import { SerializedStyles } from '@emotion/react';
 
 interface Props {
   number: number;
-  type?: 'posts' | 'tags' | 'categories';
   styles?: (SerializedStyles | TwStyle);
 }
 
-export function PagingButton({ number, type = 'posts', styles, }: Props) {
+export function PagingButton({ number, styles, }: Props) {
   const style = {
-    default: [
+    default: css([
       tw`  `,
       styles,
-    ],
+    ]),
   };
 
   return (
     <>
-      <Link href={`/${type}/page/${number}`} css={style.default}>{number}</Link>
+      <Link href={`/poats/page/${number}`} css={style.default}>{number}</Link>
     </>
   );
 }

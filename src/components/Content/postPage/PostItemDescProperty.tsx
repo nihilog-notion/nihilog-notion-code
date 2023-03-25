@@ -8,14 +8,16 @@ interface Props {
 }
 
 export function PostItemDescProperty({ styles, description, }: Props) {
-  const style = css([
-    tw` text-[1rem] flex-[1] text-justify break-all text-ellipsis line-clamp-4 `,
-    styles,
-  ]);
+  const style = {
+    default: css([
+      tw` text-[1rem] text-justify break-all text-ellipsis line-clamp-4 mb-5 h-[120px] `,
+      styles,
+    ]),
+  };
 
   return (
     <>
-      <p css={style}>{description || '설명이 없습니다.'}</p>
+      <p css={style.default}>{description || '설명이 없습니다.'}</p>
     </>
   );
 }

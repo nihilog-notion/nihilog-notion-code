@@ -9,10 +9,10 @@ interface Props {
 
 export function Main({ styles, children, }: Props) {
   const style = {
-    default: [
+    default: css([
       tw`  `,
       styles,
-    ],
+    ]),
   };
 
   return (

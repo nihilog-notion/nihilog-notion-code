@@ -34,15 +34,17 @@ export function Heading({ styles, type: Type = 'h1', children, }: Props) {
     }
   }, [ Type, ]);
 
-  const style = css([
-    tw` font-900 `,
-    size,
-    styles,
-  ]);
+  const style = {
+    default: css([
+      tw` font-900 `,
+      size,
+      styles,
+    ]),
+  };
 
   return (
     <>
-      <Type css={style}>{children}</Type>
+      <Type css={style.default}>{children}</Type>
     </>
   );
 }

@@ -8,14 +8,19 @@ interface Props {
 }
 
 export function PostList({ styles, children, }: Props) {
-  const style = css([
-    tw` grid grid-cols-4 gap-[30px] `,
-    styles,
-  ]);
+  const style = {
+    default: css([
+      tw` grid grid-cols-3 gap-[30px] `,
+      tw` md:( grid-cols-2 ) `,
+      tw` sm:( grid-cols-1 ) `,
+      tw` xs:( grid-cols-1 ) `,
+      styles,
+    ]),
+  };
 
   return (
     <>
-      <div css={style}>{children}</div>
+      <div css={style.default}>{children}</div>
     </>
   );
 }
